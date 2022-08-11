@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,8 +11,12 @@ import javax.persistence.Table;
 @Table(name = "tb_genre")
 public class Genre implements Serializable{
 
+
+	private static final long serialVersionUID = -8288013660755764613L;
 	private Long id;
 	private String name;
+	
+	private List<Movie> movies;
 	
 	public Genre() {
 		
@@ -37,6 +42,12 @@ public class Genre implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	
+
+	public List<Movie> getMovies() {
+		return movies;
 	}
 
 	@Override

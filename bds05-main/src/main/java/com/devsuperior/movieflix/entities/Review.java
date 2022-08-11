@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,17 @@ public class Review implements Serializable{
 	private Long id;
 	@Column(columnDefinition="TEXT")	
 	private String text;
+	
+	@ManyToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
+		
+	@OneToMany(mappedBy = "review")
+	private Movie movie;
+	
+	public Review() {
+		
+	}
 	
 	public Review(Long id, String text) {
 		super();
@@ -42,6 +56,22 @@ public class Review implements Serializable{
 
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 	@Override
