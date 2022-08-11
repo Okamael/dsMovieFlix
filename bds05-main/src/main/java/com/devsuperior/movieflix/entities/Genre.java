@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public class Genre implements Serializable{
 	private Long id;
 	private String name;
 	
-	private List<Movie> movies;
+	private List<Movie> movies = new ArrayList<>();
 	
 	public Genre() {
 		

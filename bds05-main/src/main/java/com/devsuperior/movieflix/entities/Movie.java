@@ -1,6 +1,7 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Movie implements Serializable{
 	
 	@ManyToOne()
 	@JoinColumn(name = "review_id")
-	private List<Review> reviews;
+	private List<Review> reviews = new ArrayList<>();
 	
 	@OneToMany
 	private Genre genre;
