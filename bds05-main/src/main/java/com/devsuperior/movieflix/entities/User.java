@@ -1,8 +1,10 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,6 +41,8 @@ public class User implements UserDetails, Serializable{
 	private String password;
 	
 	
+	@ManyToMany(mappedBy = "user")
+	private List<Review> reviews = new ArrayList<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
@@ -90,6 +94,10 @@ public class User implements UserDetails, Serializable{
 	}
 	
 
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
 
 	public Set<Role> getRoles() {
 		return roles;
